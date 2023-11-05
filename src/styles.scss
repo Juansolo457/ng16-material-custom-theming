@@ -1,4 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat; // var declaration
+
+@include mat.core();  // NOTE: do not duplicate this string mixin, will affect bundle size
+
+$brand-theme: mat.define-light-theme(( // creates scss map
+  color: (primary: mat.define-palette(mat.$green-palette,400),
+  accent: mat.define-palette(mat.$orange-palette))
+));
+
+@include mat.all-component-themes($brand-theme);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
