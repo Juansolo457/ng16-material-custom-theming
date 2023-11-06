@@ -17,12 +17,23 @@ $merged-brand-theme: map.deep-merge($brand-theme, (
       background: mat.get-color-from-palette(mat.$blue-gray-palette, 100, 0.5)
     ),
     foreground: (
-    text:  mat.get-color-from-palette(mat.$blue-gray-palette, 900)
+    text:  mat.get-color-from-palette(mat.$blue-gray-palette, 900),
+    elevation: limegreen // example of changing the shadow - this uses foreground - using the material elevation classes
     )
   )
 ));
 
 @include mat.all-component-themes($merged-brand-theme);
+
+.content-elevation {
+  //@include mat.elevation(24, limegreen, 0.9) // elevation, color and opacity - takes prioirty over util CSS classes..
+  //@include mat.overridable-elevation(24, limegreen) // elevation, color no opacity(this will get picked up from the utility -css)
+  @include mat.elevation-transition(1s);
+  &:hover {
+    @include mat.overridable-elevation(4, green)
+  }
+
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
