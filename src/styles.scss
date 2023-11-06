@@ -1,11 +1,12 @@
 @use '@angular/material' as mat; // var declaration
+@use './styles/brand-palettes';
 @use 'sass:map';
 
-@include mat.core();  // NOTE: do not duplicate this string mixin, will affect bundle size
+@include mat.core();  // NOTE: do not duplicate this string mixin var - it will affect bundle size
 
 $brand-theme: mat.define-light-theme(( // creates scss map
-  color: (primary: mat.define-palette(mat.$teal-palette,700),
-  accent: mat.define-palette(mat.$orange-palette),
+  color: (primary: mat.define-palette(brand-palettes.$brand-blue-palette, 600, 200, 800),
+  accent: mat.define-palette(brand-palettes.$brand-yellow-palette, 600, 300, 800),
   warn: mat.define-palette(mat.$pink-palette))
 ));
 
@@ -16,7 +17,7 @@ $merged-brand-theme: map.deep-merge($brand-theme, (
       background: mat.get-color-from-palette(mat.$blue-gray-palette, 100, 0.5)
     ),
     foreground: (
-    text: blue
+    text:  mat.get-color-from-palette(mat.$blue-gray-palette, 900)
     )
   )
 ));
