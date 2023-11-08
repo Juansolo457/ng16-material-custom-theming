@@ -1,1 +1,38 @@
-<p>banner works!</p>
+<!--<div class="header">-->
+<!--  <h2>Header Banner comp</h2>-->
+<!--</div>-->
+<!--<div class="content">-->
+<!--  <mat-form-field>-->
+<!--    <input matInput type="number">-->
+<!--  </mat-form-field>-->
+<!--</div>-->
+
+
+<div class="example-container">
+  <div class="oa-form-border-box">
+    <mat-form-field appearance="fill" color="primary">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="oa-form-border-box child">
+    <mat-form-field appearance="fill" color="primary">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+
+
+<!--  <mat-form-field appearance="fill" color="primary">-->
+<!--    <mat-label>Enter your email</mat-label>-->
+<!--    <input matInput placeholder="pat@example.com" [formControl]="email" required>-->
+<!--    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+<!--  </mat-form-field>-->
+<!--  <mat-form-field appearance="fill" color="primary">-->
+<!--    <mat-label>Enter your email</mat-label>-->
+<!--    <input matInput placeholder="pat@example.com" [formControl]="email" required>-->
+<!--    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+<!--  </mat-form-field>-->
+</div>

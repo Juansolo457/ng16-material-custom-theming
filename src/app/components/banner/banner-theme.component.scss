@@ -1,0 +1,51 @@
+@use '@angular/material' as mat;
+
+// use primary color from brand theme and update this custom component
+@mixin color($color-config) {
+  /* NOTE: don't forget your semi colons!*/
+  $primary-color: mat.get-color-from-palette($color-config, primary);
+  $warn-color: mat.get-color-from-palette($color-config, warn);
+
+  /* This will control adding Material mixin SCSS and styling to this
+      custom banner component - we add the css classes on the html for
+      this component using the material styling through SCSS
+  */
+
+  // Use the actual element selector and select the CSS classes
+  app-banner {
+    .header {
+      background-color: mat.get-color-from-palette($primary-color, default);
+      color: mat.get-color-from-palette($primary-color, default-contrast);
+      // default-contrast comes from the $theme file
+    }
+    .content {
+      background-color: mat.get-color-from-palette($primary-color, 100);
+      color: mat.get-color-from-palette($primary-color, "100-contrast");
+    }
+
+    mat-form-field {
+      color: mat.get-color-from-palette($primary-color, "100-contrast");
+    }
+
+
+    mdc-filled-text-field-error-focus-label-text-color {
+      color: orange
+    }
+  }
+}
+
+
+
+// Add color config and mixing
+@mixin theme($theme-config) {
+  // new var
+  $color-config: mat.get-color-config($theme-config);
+
+  @if $color-config != null {
+    @include color($color-config);
+  }
+}
+
+
+
+// TODO: Add hover color updates with elevation..

@@ -1,0 +1,40 @@
+/* color styles should not be in custom components - only layout styles should be contained in The CSS for a custom component.. */
+:host {
+  display: flex;
+  max-width: 600px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  height: 150px;
+  flex-direction: column;
+}
+h2, p {
+  margin: 0;
+}
+.header {
+  flex: 1 1 35%;
+}
+.content {
+  flex: 1 1 65%;
+}
+.header, .content {
+  display: flex;
+  align-items: center;
+  padding: 7px 15px;
+}
+
+.example-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+  display: flex;
+  flex-direction: row;
+}
+
+.oa-form-border-box {
+  border: solid blue;
+  border-radius: 0;
+
+  &.child {
+    border-top-color: transparent;
+  }
+}

@@ -1,6 +1,8 @@
-@use '@angular/material' as mat; // var declaration
+@use '@angular/material' as mat; // var declaration - 'as' xyz is an alias to use that SASS map
 @use './styles/brand-palettes';
+@use './app/components/banner/banner-theme.component' as banner;
 @use 'sass:map';
+
 
 @include mat.core();  // NOTE: do not duplicate this string mixin var - it will affect bundle size
 
@@ -27,7 +29,11 @@ $merged-brand-theme: map.deep-merge($brand-theme, (
   )
 ));
 
+@include mat.all-legacy-component-colors($merged-brand-theme);
 @include mat.all-component-themes($merged-brand-theme);
+@include banner.theme($merged-brand-theme);
+// TODO: wire up typography theming
+// @include mat.typographys-hierarchy($merged-brand-theme);
 
 .content-elevation { // Add class to see example mouse over transition
   // Example of mixin methods that let you override elevation:
@@ -42,10 +48,7 @@ $merged-brand-theme: map.deep-merge($brand-theme, (
 *,*::before, *::after {
   box-sizing: border-box;
 }
+//@include mat.private-form-field-theme($merged-brand-theme, default);
 
-html, body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  height: 100%;
-}
-
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
