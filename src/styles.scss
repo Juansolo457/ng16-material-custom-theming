@@ -7,7 +7,11 @@
 $brand-theme: mat.define-light-theme(( // creates scss map
   color: (primary: mat.define-palette(brand-palettes.$brand-blue-palette, 600, 200, 800),
   accent: mat.define-palette(brand-palettes.$brand-yellow-palette, 600, 300, 800),
-  warn: mat.define-palette(mat.$pink-palette))
+  warn: mat.define-palette(mat.$pink-palette),
+    typography: mat.define-typography-config(
+      $font-family: 'Poppins',
+      $headline-6: mat.define-typography-level(21px, 23px, 700)
+    ))
 ));
 
 // Override for the angular material default app background color (see index.html)
@@ -25,8 +29,9 @@ $merged-brand-theme: map.deep-merge($brand-theme, (
 
 @include mat.all-component-themes($merged-brand-theme);
 
-.content-elevation {
-  //@include mat.elevation(24, limegreen, 0.9) // elevation, color and opacity - takes prioirty over util CSS classes..
+.content-elevation { // Add class to see example mouse over transition
+  // Example of mixin methods that let you override elevation:
+  //@include mat.elevation(24, limegreen, 0.9) // elevation, color and opacity - takes priority over util CSS classes..
   //@include mat.overridable-elevation(24, limegreen) // elevation, color no opacity(this will get picked up from the utility -css)
   @include mat.elevation-transition(1s);
   &:hover {
@@ -34,6 +39,13 @@ $merged-brand-theme: map.deep-merge($brand-theme, (
   }
 
 }
+*,*::before, *::after {
+  box-sizing: border-box;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  height: 100%;
+}
+
